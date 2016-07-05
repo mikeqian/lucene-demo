@@ -43,21 +43,11 @@ public class IndexFiles {
      * Index all text files under a directory.
      */
     public static void main(String[] args) {
-        String indexPath = "F:\\index";
+        String indexPath = System.getProperty("java.io.tmpdir", "tmp") +
+                System.getProperty("file.separator") + "index-dir";
+
         String docsPath = "F:\\rubbish";
         boolean create = true;
-//        for (int i = 0; i < args.length; i++) {
-//            if ("-index".equals(args[i])) {
-//                indexPath = args[i + 1];
-//                i++;
-//            } else if ("-docs".equals(args[i])) {
-//                docsPath = args[i + 1];
-//                i++;
-//            } else if ("-update".equals(args[i])) {
-//                create = false;
-//            }
-//        }
-
         final Path docDir = Paths.get(docsPath);
         if (!Files.isReadable(docDir)) {
             System.out.println("Document directory '" + docDir.toAbsolutePath() + "' does not exist or is not readable, please check the path");
@@ -97,7 +87,7 @@ public class IndexFiles {
             // worth it when your index is relatively static (ie
             // you're done adding documents to it):
             //
-            // writer.forceMerge(1);
+            writer.forceMerge(1);
 
             writer.close();
 
