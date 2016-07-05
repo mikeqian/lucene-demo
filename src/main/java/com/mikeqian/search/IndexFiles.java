@@ -1,4 +1,4 @@
-package com.mikeqian;
+package com.mikeqian.search;
 
 
 import org.apache.lucene.analysis.Analyzer;
