@@ -13,3 +13,5 @@ hs_err_pid*
 /target
 /.idea
 /*.iml
+/src/main/webpack/node_modules
+/src/main/webpack/dist
