@@ -6,6 +6,7 @@ import org.apache.lucene.analysis.cjk.CJKAnalyzer;
 import org.apache.lucene.analysis.core.SimpleAnalyzer;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.analysis.tokenattributes.CharTermAttribute;
+import org.apdplat.word.dictionary.DictionaryFactory;
 import org.apdplat.word.lucene.ChineseWordAnalyzer;
 import org.apdplat.word.segmentation.SegmentationAlgorithm;
 import org.apdplat.word.segmentation.SegmentationFactory;
@@ -22,10 +23,10 @@ public class ChineseTest {
 
     @Test
     public void analyzerTest() throws IOException {
-        WordConfTools.set("dic.path", "classpath:dic.txt，classpath:dict_CN.dic");
-        WordConfTools.reload();
+        WordConfTools.set("dic.path", "classpath:dic.txt,classpath:dic_CN.txt");
+        //DictionaryFactory.reload();//更改词典路径之后，重新加载词典
 
-        String text = "SEO研究院是钱露晗原创的SEO博客！";
+        String text = "钱露晗是河伯！";
         Analyzer analyzer = new ChineseWordAnalyzer();
         analysis(text, analyzer);
     }

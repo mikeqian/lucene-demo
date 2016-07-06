@@ -5,7 +5,9 @@
     <artifactId>lucene-demo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>lucene-demo</name>
-
+    <properties>
+        <slf4j.version>1.7.5</slf4j.version>
+    </properties>
 
     <dependencies>
         <!-- https://mvnrepository.com/artifact/org.apache.lucene/lucene-core -->
@@ -36,6 +38,21 @@
             <groupId>org.apdplat</groupId>
             <artifactId>word</artifactId>
             <version>1.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.16</version>
         </dependency>
     </dependencies>
     <build>
