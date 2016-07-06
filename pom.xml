@@ -6,33 +6,36 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>lucene-demo</name>
 
-    <properties>
-    </properties>
 
     <dependencies>
         <!-- https://mvnrepository.com/artifact/org.apache.lucene/lucene-core -->
         <dependency>
             <groupId>org.apache.lucene</groupId>
             <artifactId>lucene-core</artifactId>
-            <version>5.5.0</version>
+            <version>4.10.4</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.apache.lucene/lucene-analyzers-common -->
+        <!--&lt;!&ndash; https://mvnrepository.com/artifact/org.apache.lucene/lucene-analyzers-common &ndash;&gt;-->
         <dependency>
             <groupId>org.apache.lucene</groupId>
             <artifactId>lucene-analyzers-common</artifactId>
-            <version>5.5.0</version>
+            <version>4.10.4</version>
         </dependency>
-        <!--&lt;!&ndash; https://mvnrepository.com/artifact/org.apache.lucene/lucene-queryparser &ndash;&gt;-->
+        <!--&lt;!&ndash;&lt;!&ndash; https://mvnrepository.com/artifact/org.apache.lucene/lucene-queryparser &ndash;&gt;&ndash;&gt;-->
         <dependency>
             <groupId>org.apache.lucene</groupId>
             <artifactId>lucene-queryparser</artifactId>
-            <version>5.5.0</version>
+            <version>4.10.4</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.11</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apdplat</groupId>
+            <artifactId>word</artifactId>
+            <version>1.2</version>
         </dependency>
     </dependencies>
     <build>

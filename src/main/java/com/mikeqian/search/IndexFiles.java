@@ -2,6 +2,7 @@ package com.mikeqian.search;
 
 
 import org.apache.lucene.analysis.Analyzer;
+import org.apache.lucene.analysis.cjk.CJKAnalyzer;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.document.Field;
@@ -14,11 +15,9 @@ import org.apache.lucene.index.IndexWriterConfig;
 import org.apache.lucene.index.Term;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
+import org.apache.lucene.util.Version;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.FileVisitResult;
 import java.nio.file.Files;
@@ -58,9 +57,9 @@ public class IndexFiles {
         try {
             System.out.println("Indexing to directory '" + indexPath + "'...");
 
-            Directory dir = FSDirectory.open(Paths.get(indexPath));
+            Directory dir = FSDirectory.open(new File(indexPath));
             Analyzer analyzer = new StandardAnalyzer();
-            IndexWriterConfig iwc = new IndexWriterConfig(analyzer);
+            IndexWriterConfig iwc = new IndexWriterConfig(Version.LATEST, analyzer);
 
             if (create) {
                 // Create a new index in the directory, removing any

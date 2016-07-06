@@ -18,6 +18,7 @@ package com.mikeqian.search;
 
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
@@ -26,6 +27,7 @@ import java.nio.file.Paths;
 import java.util.Date;
 
 import org.apache.lucene.analysis.Analyzer;
+import org.apache.lucene.analysis.cjk.CJKAnalyzer;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.index.DirectoryReader;
@@ -60,7 +62,7 @@ public class SearchFiles {
         String queryString = null;
         int hitsPerPage = 10;
 
-        IndexReader reader = DirectoryReader.open(FSDirectory.open(Paths.get(index)));
+        IndexReader reader = DirectoryReader.open(FSDirectory.open(new File(index)));
         IndexSearcher searcher = new IndexSearcher(reader);
         Analyzer analyzer = new StandardAnalyzer();
 

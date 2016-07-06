@@ -15,6 +15,7 @@ import org.apache.lucene.search.Query;
 import org.apache.lucene.search.ScoreDoc;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.RAMDirectory;
+import org.apache.lucene.util.Version;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -32,7 +33,7 @@ public class InMemoryTest {
 
         Directory directory = new RAMDirectory();
 
-        IndexWriterConfig config = new IndexWriterConfig(analyzer);
+        IndexWriterConfig config = new IndexWriterConfig(Version.LATEST, analyzer);
         IndexWriter iwriter = new IndexWriter(directory, config);
         Document doc = new Document();
         String text = "This is the text to be indexed.";
