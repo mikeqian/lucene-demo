@@ -16,6 +16,8 @@ import org.apache.lucene.index.Term;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
 import org.apache.lucene.util.Version;
+import org.apdplat.word.lucene.ChineseWordAnalyzer;
+import org.apdplat.word.util.WordConfTools;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
@@ -46,7 +48,7 @@ public class IndexFiles {
                 System.getProperty("file.separator") + "index-dir";
 
         String docsPath = "F:\\rubbish";
-        boolean create = true;
+        boolean create = false;
         final Path docDir = Paths.get(docsPath);
         if (!Files.isReadable(docDir)) {
             System.out.println("Document directory '" + docDir.toAbsolutePath() + "' does not exist or is not readable, please check the path");
@@ -58,7 +60,9 @@ public class IndexFiles {
             System.out.println("Indexing to directory '" + indexPath + "'...");
 
             Directory dir = FSDirectory.open(new File(indexPath));
-            Analyzer analyzer = new StandardAnalyzer();
+
+            WordConfTools.set("dic.path", "classpath:dic.txt,classpath:dic_CN.txt");
+            Analyzer analyzer = new ChineseWordAnalyzer();
             IndexWriterConfig iwc = new IndexWriterConfig(Version.LATEST, analyzer);
 
             if (create) {
@@ -160,7 +164,7 @@ public class IndexFiles {
             // so that the text of the file is tokenized and indexed, but not stored.
             // Note that FileReader expects the file to be in UTF-8 encoding.
             // If that's not the case searching for special characters will fail.
-            doc.add(new TextField("contents", new BufferedReader(new InputStreamReader(stream, StandardCharsets.UTF_8))));
+            doc.add(new StringField("contents", "钱露晗", Field.Store.YES));
 
             if (writer.getConfig().getOpenMode() == OpenMode.CREATE) {
                 // New index, so we just add the document (no old document can be there):

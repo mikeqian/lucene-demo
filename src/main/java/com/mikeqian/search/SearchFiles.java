@@ -38,6 +38,8 @@ import org.apache.lucene.search.Query;
 import org.apache.lucene.search.ScoreDoc;
 import org.apache.lucene.search.TopDocs;
 import org.apache.lucene.store.FSDirectory;
+import org.apdplat.word.lucene.ChineseWordAnalyzer;
+import org.apdplat.word.util.WordConfTools;
 
 /**
  * Simple command-line based search demo.
@@ -64,7 +66,9 @@ public class SearchFiles {
 
         IndexReader reader = DirectoryReader.open(FSDirectory.open(new File(index)));
         IndexSearcher searcher = new IndexSearcher(reader);
-        Analyzer analyzer = new StandardAnalyzer();
+
+        WordConfTools.set("dic.path", "classpath:dic.txt,classpath:dic_CN.txt");
+        Analyzer analyzer = new ChineseWordAnalyzer();
 
         BufferedReader in = null;
         if (queries != null) {
